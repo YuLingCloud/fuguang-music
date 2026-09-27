@@ -1,0 +1,39 @@
+{
+  "resolvers": {
+    "tencent": [],
+    "kugou": []
+  },
+  "background": {
+    "api": "https://tu.ltyuanfang.cn/api/fengjing.php"
+  },
+  "lxPriority": {
+    "wy": [
+      "屿溪-终章.js",
+      "K×H测试 v1.7.17.js",
+      "lx-玉宁熙V1.2.2.js",
+      "收集の聚合接口.js"
+    ],
+    "tx": [
+      "xinghai-music-sourcev2.3.11.js",
+      "屿溪-终章.js",
+      "Hei Music1.3.1 (1).js",
+      "lx-玉宁熙V1.2.2.js"
+    ],
+    "kg": [
+      "屿溪-终章.js",
+      "墨澜音乐源v2.3.0.js",
+      "xinghai-music-sourcev2.3.11.js",
+      "念心音源 v1.0.2.js"
+    ],
+    "kw": [
+      "K×H测试 v1.7.17.js",
+      "lx-玉宁熙V1.2.2.js",
+      "xinghai-music-sourcev2.3.11.js"
+    ],
+    "mg": [
+      "K×H测试 v1.7.17.js",
+      "屿溪-终章.js",
+      "lx-玉宁熙V1.2.2.js"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "fuguang-music-site",
+  "version": "1.1.0",
+  "private": true,
+  "description": "浮光音乐 · 无损音乐播放器",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

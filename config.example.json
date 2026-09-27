@@ -1,0 +1,13 @@
+{
+  "resolvers": {
+    "tencent": [
+      "https://你的解析服务/?server=tencent&type=url&id={id}"
+    ],
+    "kugou": [
+      "https://你的解析服务/?server=kugou&type=url&id={id}"
+    ]
+  },
+  "background": {
+    "api": "自定义随机背景图 API 地址；请求后跟随重定向取最终图片，也支持返回 JSON 的接口"
+  }
+}

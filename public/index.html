@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="screen-orientation" content="landscape">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="浮光音乐">
+<meta name="theme-color" content="#f2f2ee" id="themeColor">
+<link rel="manifest" href="/manifest.webmanifest?v=20260924">
+<link rel="icon" href="/icon-192.png?v=20260924" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/icon-192.png?v=20260924">
+<meta name="format-detection" content="telephone=no">
+<title>浮光音乐</title>
+<link rel="stylesheet" href="/style.css?v=20260924">
+<link rel="stylesheet" href="/themes.css?v=20260924">
+</head>
+<body data-view="search">
+
+<div id="bg" aria-hidden="true">
+  <img id="bgPhotoA" class="bg-photo" alt="" referrerpolicy="no-referrer">
+  <img id="bgPhotoB" class="bg-photo" alt="" referrerpolicy="no-referrer">
+</div>
+
+<aside id="sidebar">
+  <div class="brand">
+    <span class="brand-mark">浮光</span>
+  </div>
+
+  <div class="search-row">
+    <div class="dd" id="srcDD">
+      <button id="srcBtn" class="dd-btn" aria-expanded="false" title="选择音源">
+        <span id="srcLab">全部</span>
+        <svg viewBox="0 0 24 24" class="ic chev"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="srcMenu" class="dd-menu" hidden></div>
+    </div>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M21 21l-4.5-4.5M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="search" enterkeyhint="search" autofocus placeholder="搜索歌曲 / 专辑 / 歌单" autocomplete="off">
+      <button id="searchBtn" class="icon-btn" title="搜索">
+        <svg viewBox="0 0 24 24" class="ic"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="side-sec">
+    <div class="side-label">本页</div>
+    <div class="side-btns">
+      <button id="queueBtn" class="line-btn">
+        队列 <span id="queueCount" class="mono">0</span>
+      </button>
+      <button id="playlistBtn" class="line-btn">导入歌单</button>
+      <button id="bgBtn" class="line-btn">换背景</button>
+      <button id="rotBtn" class="line-btn" hidden>横屏</button>
+      <div class="dd side-dd" id="themeDD">
+        <button id="themeBtn" class="line-btn dd-trigger" aria-expanded="false">
+          <span>主题设置</span>
+          <span class="dd-cur"><span id="themeName">浅 · 清新</span><svg viewBox="0 0 24 24" class="ic chev"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div id="themeMenu" class="dd-menu" hidden></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <div class="note-label">一言</div>
+    <p id="hitokoto" class="note-text">加载中…</p>
+    <div class="note-foot">
+      <span id="hitokotoFrom" class="note-from"></span>
+      <button id="hitokotoBtn" class="link-btn">换一句</button>
+    </div>
+  </div>
+
+  <div class="side-foot">浮光跃金，静影沉璧</div>
+</aside>
+
+<main id="main">
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <section id="viewSearch" class="view">
+    <div class="view-head">
+      <button id="backBtn" class="icon-btn" hidden title="返回搜索结果">
+        <svg viewBox="0 0 24 24" class="ic"><path d="M19 12H5m7-7-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h1 id="resultTitle">浮光音乐</h1>
+      <span id="resultMeta" class="view-meta"></span>
+    </div>
+    <div id="searchTabs" class="search-tabs" hidden>
+      <button class="stab active" data-tab="song">单曲 <span class="cnt mono" id="cntSong">0</span></button>
+      <button class="stab" data-tab="album">专辑 <span class="cnt mono" id="cntAlbum">0</span></button>
+      <button class="stab" data-tab="playlist">歌单 <span class="cnt mono" id="cntPlaylist">0</span></button>
+    </div>
+    <div id="engineBar" class="engine-bar" hidden>
+      <span class="engine-label">线路</span>
+      <div class="dd" id="engineDD">
+        <button id="engineBtn" class="dd-btn compact" aria-expanded="false">
+          <span id="engineName">自动</span>
+          <span id="engineMs" class="mono lat"></span>
+          <svg viewBox="0 0 24 24" class="ic chev"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="engineMenu" class="dd-menu" hidden></div>
+      </div>
+      <span id="probeState" class="engine-hint"></span>
+    </div>
+    <div id="results" class="list" role="list"></div>
+  </section>
+
+  <section id="viewQueue" class="view" hidden>
+    <div class="view-head">
+      <h1>播放队列</h1>
+      <button id="clearQueue" class="link-btn auto">清空</button>
+    </div>
+    <div id="queueList" class="list"></div>
+  </section>
+</main>
+
+<footer id="player">
+  <div id="progressLine"><div id="progressFill"></div><div id="progressThumb"></div></div>
+  <div class="player-grid">
+    <button id="expandBtn" class="icon-btn" title="沉浸模式" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="ic ic-up"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" class="ic ic-down"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="p-left" id="pTrack">
+      <img id="pCover" class="p-cover noimg" alt="">
+      <div class="p-meta">
+        <div id="pName" class="p-name">未在播放</div>
+        <div id="pArtist" class="p-artist">搜索一首歌开始</div>
+      </div>
+    </div>
+
+    <div class="p-center">
+      <div class="transport">
+        <button id="prevBtn" class="icon-btn" title="上一首">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M6 5v14M20 5l-10 7 10 7z" fill="currentColor"/></svg>
+        </button>
+        <button id="playBtn" class="play-btn" title="播放 / 空格">
+          <svg viewBox="0 0 24 24" class="ic ic-play"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" class="ic ic-pause"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+        </button>
+        <button id="nextBtn" class="icon-btn" title="下一首">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M18 5v14M4 5l10 7-10 7z" fill="currentColor"/></svg>
+        </button>
+        <button id="loopBtn" class="icon-btn" title="列表循环">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M17 3l3 3-3 3M20 6H8a4 4 0 0 0-4 4v1m3 10-3-3 3-3M4 18h12a4 4 0 0 0 4-4v-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="time-row">
+        <span id="tCur">0:00</span>
+        <span id="miniLyric" class="mini-lyric">—</span>
+        <span id="tDur">0:00</span>
+      </div>
+    </div>
+
+    <div class="p-right">
+      <button id="lyricBtn" class="icon-btn" title="沉浸模式">
+        <svg viewBox="0 0 24 24" class="ic"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button id="qualityBtn" class="quality-badge mono" title="音质">--</button>
+      <div class="vol-wrap">
+        <svg viewBox="0 0 24 24" class="ic"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input id="volSlider" type="range" min="0" max="100" value="90" aria-label="音量">
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<div id="qualityPop" class="ctxmenu" hidden>
+  <div class="ctx-label">音质</div>
+  <button class="ctx-opt" data-q="master">Master <span>母带</span></button>
+  <button class="ctx-opt" data-q="atmos_plus">Atmos+ <span>全景声+</span></button>
+  <button class="ctx-opt" data-q="atmos">Atmos <span>全景声</span></button>
+  <button class="ctx-opt" data-q="hires">Hires <span>高解析</span></button>
+  <button class="ctx-opt" data-q="lossless">Flac <span>无损</span></button>
+  <button class="ctx-opt" data-q="high">320K <span>高码率</span></button>
+  <button class="ctx-opt" data-q="standard">128K <span>标准</span></button>
+  <div class="ctx-note mono" id="qualityNow"></div>
+</div>
+
+
+<div id="playlistModal" class="modal-mask" hidden>
+  <div class="modal">
+    <div class="modal-title">导入歌单链接</div>
+    <p class="modal-tip">网易云 / QQ / 酷狗 / 酷我</p>
+    <input id="playlistUrl" class="modal-input" type="url" placeholder="https://music.163.com/playlist?id=..." autocomplete="off">
+    <div class="modal-actions">
+      <button id="playlistCancel" class="link-btn">取消</button>
+      <button id="playlistGo" class="solid-btn">导入并播放</button>
+    </div>
+  </div>
+</div>
+
+
+<section id="immersive" hidden>
+  <div class="imm-bg"><img id="immBgImg" alt=""></div>
+  <div class="imm-frost"></div>
+  <div class="imm-scrim"></div>
+  <div class="imm-inner">
+    <div class="imm-top">
+      <div class="imm-kicker">正在播放</div>
+      <div class="imm-topbtns">
+        <button id="immTone" class="icon-btn" title="切换明暗色调">
+          <svg viewBox="0 0 24 24" class="ic ic-sun"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" class="ic ic-moon"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="immClose" class="icon-btn" title="收起 (Esc)">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="imm-body">
+      <div class="imm-left">
+        <div class="imm-discwrap">
+          <div class="imm-disc" id="immDisc">
+            <div class="imm-grooves" aria-hidden="true"></div>
+            <img id="immCover" class="imm-cover noimg" alt="">
+            <span class="imm-spindle" aria-hidden="true"></span>
+          </div>
+          <span class="imm-arm" aria-hidden="true"><i></i></span>
+        </div>
+        <div id="immName" class="imm-name">未在播放</div>
+        <div id="immArtist" class="imm-artist">—</div>
+        <div id="immTags" class="imm-tags"></div>
+        <div class="imm-controls">
+          <button id="immPrev" class="icon-btn" title="上一首">
+            <svg viewBox="0 0 24 24" class="ic"><path d="M6 5v14M20 5l-10 7 10 7z" fill="currentColor"/></svg>
+          </button>
+          <button id="immPlay" class="play-btn" title="播放 / 暂停">
+            <svg viewBox="0 0 24 24" class="ic ic-play"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24" class="ic ic-pause"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <button id="immNext" class="icon-btn" title="下一首">
+            <svg viewBox="0 0 24 24" class="ic"><path d="M18 5v14M4 5l10 7-10 7z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="imm-lyric">
+        <div id="immLyricInner" class="imm-lrc-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div id="toasts" aria-live="polite"></div>
+<audio id="audio" preload="auto"></audio>
+<script src="/app.js?v=20260924"></script>
+</body>
+</html>
