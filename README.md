@@ -97,7 +97,7 @@ curl "http://localhost:3000/api/diag?kw=周杰伦"
 | `02-引擎与搜索垫片/` | `lxweb-engine.js`、`lxweb-native-search.js` |
 | `03-配置模板/` | `config.example.json` |
 
-- 下载：[Fuguang.zip（GitHub Release 附件）](https://github.com/YuLingCloud/fuguang-music/releases/download/v1.1.0/Fuguang.zip) ｜ [Release 页](https://github.com/YuLingCloud/fuguang-music/releases/tag/v1.1.0)
+- 下载：[Fuguang.zip（GitHub Release 附件）](https://github.com/YuLingCloud/Fuguang-Music/releases/download/v1.1.0/Fuguang.zip) ｜ [Release 页](https://github.com/YuLingCloud/Fuguang-Music/releases/tag/v1.1.0)
 - 此包的使用详见包内 `食用说明.txt`
 
 ## 五、问题区（尚未实现 / 已知BUG）
