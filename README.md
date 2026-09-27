@@ -89,7 +89,7 @@ curl "http://localhost:3000/api/diag?kw=周杰伦"
 
 ### 音源脚本与垫片
 
-压缩包 **`浮光.zip`**（31 个文件），分类目录：
+压缩包 **`Fuguang.zip`**（31 个文件），分类目录：
 
 | 目录 | 内容 |
 |---|---|
@@ -97,8 +97,8 @@ curl "http://localhost:3000/api/diag?kw=周杰伦"
 | `02-引擎与搜索垫片/` | `lxweb-engine.js`、`lxweb-native-search.js` |
 | `03-配置模板/` | `config.example.json` |
 
-- 下载链接：`【待回填：你把压缩包传到网盘后，把链接发我，我补到这里】`
-- 此包的使用详见包内 `说明.txt`
+- 下载：[Fuguang.zip（GitHub Release 附件）](https://github.com/YuLingCloud/fuguang-music/releases/download/v1.1.0/Fuguang.zip) ｜ [Release 页](https://github.com/YuLingCloud/fuguang-music/releases/tag/v1.1.0)
+- 此包的使用详见包内 `食用说明.txt`
 
 ## 五、问题区（尚未实现 / 已知BUG）
 
@@ -106,6 +106,14 @@ curl "http://localhost:3000/api/diag?kw=周杰伦"
 - **酷我歌单详情**：官方接口需CSRF token（服务端拿不到），同样按歌单名回查近似
 - **酷狗取链**：官方直连接口全线风控（m3c不通、gateway 404、wwwapi返err 30020骨架），取链完全依赖社区音源脚本
 - **咪咕搜索**关键词最佳匹配，非精确分页结果
+
+---
+
+## 致谢
+
+- [洛雪音乐](https://github.com/lyswhut/lx-music-mobile)：音源脚本基于洛雪 1.x 音源脚本协议开发，本站的搜索与取链分层思路亦与其一脉相承
+- 洛雪社区各音源脚本的作者们
+- 本项目以 [AGPL-3.0](./LICENSE) 协议开源，为独立项目
 
 ---
 
