@@ -11,25 +11,24 @@
 <meta name="apple-mobile-web-app-title" content="浮光音乐">
 <meta name="theme-color" content="#f2f2ee" id="themeColor">
 <link rel="manifest" href="/manifest.webmanifest?v=20260924">
-<link rel="icon" href="/icon-192.png?v=20260924" sizes="192x192" type="image/png">
-<link rel="apple-touch-icon" href="/icon-192.png?v=20260924">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260927">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20260927">
+<link rel="icon" sizes="192x192" type="image/png" href="/icon-192.png?v=20260927">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260927">
 <meta name="format-detection" content="telephone=no">
 <title>浮光音乐</title>
-<link rel="stylesheet" href="/style.css?v=20260924">
-<link rel="stylesheet" href="/themes.css?v=20260924">
+<link rel="stylesheet" href="/style.css?v=2026092702">
+<link rel="stylesheet" href="/themes.css?v=2026092702">
 </head>
 <body data-view="search">
-
 <div id="bg" aria-hidden="true">
   <img id="bgPhotoA" class="bg-photo" alt="" referrerpolicy="no-referrer">
   <img id="bgPhotoB" class="bg-photo" alt="" referrerpolicy="no-referrer">
 </div>
-
 <aside id="sidebar">
   <div class="brand">
     <span class="brand-mark">浮光</span>
   </div>
-
   <div class="search-row">
     <div class="dd" id="srcDD">
       <button id="srcBtn" class="dd-btn" aria-expanded="false" title="选择音源">
@@ -46,7 +45,6 @@
       </button>
     </div>
   </div>
-
   <div class="side-sec">
     <div class="side-label">本页</div>
     <div class="side-btns">
@@ -65,7 +63,6 @@
       </div>
     </div>
   </div>
-
   <div class="note-card">
     <div class="note-label">一言</div>
     <p id="hitokoto" class="note-text">加载中…</p>
@@ -74,10 +71,8 @@
       <button id="hitokotoBtn" class="link-btn">换一句</button>
     </div>
   </div>
-
   <div class="side-foot">浮光跃金，静影沉璧</div>
 </aside>
-
 <main id="main">
   <canvas id="sparks" aria-hidden="true"></canvas>
   <section id="viewSearch" class="view">
@@ -107,7 +102,6 @@
     </div>
     <div id="results" class="list" role="list"></div>
   </section>
-
   <section id="viewQueue" class="view" hidden>
     <div class="view-head">
       <h1>播放队列</h1>
@@ -115,8 +109,14 @@
     </div>
     <div id="queueList" class="list"></div>
   </section>
+  <section id="viewHistory" class="view" hidden>
+    <div class="view-head">
+      <h1>历史播放</h1>
+      <button id="historyClear" class="link-btn auto">清空</button>
+    </div>
+    <div id="historyList" class="list"></div>
+  </section>
 </main>
-
 <footer id="player">
   <div id="progressLine"><div id="progressFill"></div><div id="progressThumb"></div></div>
   <div class="player-grid">
@@ -131,7 +131,6 @@
         <div id="pArtist" class="p-artist">搜索一首歌开始</div>
       </div>
     </div>
-
     <div class="p-center">
       <div class="transport">
         <button id="prevBtn" class="icon-btn" title="上一首">
@@ -154,9 +153,8 @@
         <span id="tDur">0:00</span>
       </div>
     </div>
-
     <div class="p-right">
-      <button id="lyricBtn" class="icon-btn" title="沉浸模式">
+      <button id="lyricBtn" class="icon-btn" title="历史播放">
         <svg viewBox="0 0 24 24" class="ic"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <button id="qualityBtn" class="quality-badge mono" title="音质">--</button>
@@ -167,8 +165,6 @@
     </div>
   </div>
 </footer>
-
-
 <div id="qualityPop" class="ctxmenu" hidden>
   <div class="ctx-label">音质</div>
   <button class="ctx-opt" data-q="master">Master <span>母带</span></button>
@@ -180,8 +176,6 @@
   <button class="ctx-opt" data-q="standard">128K <span>标准</span></button>
   <div class="ctx-note mono" id="qualityNow"></div>
 </div>
-
-
 <div id="playlistModal" class="modal-mask" hidden>
   <div class="modal">
     <div class="modal-title">导入歌单链接</div>
@@ -193,8 +187,6 @@
     </div>
   </div>
 </div>
-
-
 <section id="immersive" hidden>
   <div class="imm-bg"><img id="immBgImg" alt=""></div>
   <div class="imm-frost"></div>
@@ -244,11 +236,8 @@
     </div>
   </div>
 </section>
-
-
-
 <div id="toasts" aria-live="polite"></div>
 <audio id="audio" preload="auto"></audio>
-<script src="/app.js?v=20260924"></script>
+<script src="/app.js?v=2026092702"></script>
 </body>
 </html>
